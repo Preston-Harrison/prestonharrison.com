@@ -1,0 +1,57 @@
+.who-am-i-container {
+    position: fixed;
+    padding: 22.5vh 20vw;
+    width: 100%;
+    height: 100%;
+
+    h1 {
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    hr {
+        width: 75%;
+        height: 6px;
+        background-color: #fff;
+        margin: 0.5rem 0;
+
+        &.animateIn {
+            animation: animateIn 0.5s ease-out forwards;
+        }
+
+        &.animateOut {
+            animation: animateOut 0.5s ease-out forwards;
+        }
+    }
+
+    p {
+        width: 60%;
+        margin: 1rem 0;
+    }
+}
+
+@keyframes animateIn {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 75%;
+    }
+}
+
+@keyframes animateOut {
+    0% {
+        width: 75%;
+    }
+
+    99% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 0;
+        opacity: 0;
+    }
+}
+  
