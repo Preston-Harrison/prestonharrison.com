@@ -70,3 +70,22 @@ button {
 .bring-to-back {
   z-index: -1;
 }
+
+input, textarea {
+  border: none;
+  background-color: white;
+  border-radius: 0;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  display: block;
+  font-family: inherit;
+  letter-spacing: normal;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.expand {
+    width: 100%;
+  }
+}
