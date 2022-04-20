@@ -1,4 +1,5 @@
 @use './colors';
+@use './screen';
 
 .title-container {
     display: flex;
@@ -20,12 +21,29 @@
 
         &.moveToTop {
             font-size: 2rem;
-            top: 3.5rem;
+            top: 3.25rem;
+        }
+
+        @media screen and (max-width: screen.$small) {
+            font-size: 1.5rem;
+            text-align: center;
+            top: calc(50% - 3rem);
+
+            &.moveToTop {
+                font-size: 1rem;
+                opacity: 0;
+            }
         }
     }
 
     h2 {
         margin: 0;
         font-weight: normal;
+
+        @media screen and (max-width: screen.$small) {
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
     }
 }

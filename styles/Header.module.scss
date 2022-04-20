@@ -1,3 +1,5 @@
+@use './screen';
+
 #header-container {
     position: fixed;
     padding: 3rem 4rem;
@@ -5,6 +7,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    @media screen and (max-width: screen.$small) {
+        padding: 1.5rem 1rem;
+    }
 
     svg {
         font-size: 3rem;
@@ -20,4 +26,6 @@
         gap: 1rem;
         padding: 0.5rem 2rem;
     }
+
+    
 }

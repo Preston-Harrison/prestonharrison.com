@@ -1,3 +1,5 @@
+@use './screen';
+
 .modal-container {
     display: flex;
     justify-content: center;
@@ -16,13 +18,14 @@
         cursor: pointer;
         transition: all 250ms;
 
+        @media screen and (max-width: screen.$small) {
+            top: 2rem;
+            right: 2rem;
+        }
+
         &:hover {
             letter-spacing: 0.3rem;
             font-weight: bold;
         }
     }
 }
-
-// .modal-noshow {
-//     display: none;
-// }

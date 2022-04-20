@@ -1,3 +1,5 @@
+@use './screen';
+
 .contact-form-container {
     width: clamp(300px, 70%, 800px);
 
@@ -5,10 +7,18 @@
         margin: auto;
         text-align: center;
         padding-bottom: 1rem;
+
+        @media screen and (max-width: screen.$small) {
+            display: none;
+        }
     }
     .form-body {
         padding: 2rem 3rem;
         border: 2px solid white;
+
+        @media screen and (max-width: screen.$small) {
+            padding: 1rem;
+        }
 
         >div {
             margin-bottom: 1rem;

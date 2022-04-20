@@ -1,3 +1,4 @@
+@use './screen';
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
 
 html,
@@ -39,6 +40,11 @@ p {
   text-transform: none;
   letter-spacing: 0.1em;
   font-size: 1.1rem;
+
+  @media screen and (max-width: screen.$small) {
+    letter-spacing: normal;
+    hyphens: auto;
+  }
 }
 
 button {

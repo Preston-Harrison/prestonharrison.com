@@ -1,3 +1,5 @@
+@use './screen';
+
 .contact-me-container {
     display: flex;
     justify-content: center;
@@ -13,6 +15,10 @@
         margin-bottom: 2rem;
         padding: 0;
         text-align: center;
+
+        @media screen and (max-width: screen.$small) {
+            font-size: 2rem;
+        }
     }
 
     .cursor {
@@ -23,12 +29,22 @@
         width: 4px;
         background-color: #ffffff;
         animation: flash 1s steps(2) infinite;
+
+        @media screen and (max-width: screen.$small) {
+            height: 2rem;
+            top: 4px;
+        }
     }
 
     button {
         font-size: 2rem;
         font-weight: 600;
         padding: 1rem 3rem;
+
+        @media screen and (max-width: screen.$small) {
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+        }
     }
 }
 
