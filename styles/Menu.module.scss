@@ -1,0 +1,24 @@
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 60vh;
+    
+    h1 {
+        text-align: center;
+        margin: 1rem;
+        cursor: pointer;
+        transition: all 250ms;
+
+        &:hover {
+            letter-spacing: 5px;
+        }
+    }
+
+    .separator {
+        flex: 1;
+        background-color: white;
+        width: 2px;
+    }
+}

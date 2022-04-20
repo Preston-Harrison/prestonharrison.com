@@ -5,7 +5,7 @@ import ThreeJSCanvas from '../components/Canvas/ThreeJSCanvas';
 import ContactMe from '../components/ContactMe';
 import Header from '../components/Header';
 import Modal, { ModalType } from '../components/Modal';
-import Projects from '../components/Projects';
+import { Projects, ProjectsMobile } from '../components/Projects';
 import TitleCard from '../components/Title';
 import WhoAmI from '../components/WhoAmI';
 import styles from '../styles/Home.module.scss';
@@ -21,10 +21,10 @@ const Home: NextPage = () => {
       let stage = -1;
       if (scroll < 1000) stage = 1;
       else if (scroll > 2000 && scroll <= 3000) stage = 2;
-      else if (scroll > 4000 && scroll <= 5000) stage = 3;
-      else if (scroll > 5000 && scroll <= 6000) stage = 4;
-      else if (scroll > 6000 && scroll <= 7000) stage = 5;
-      else if (scroll > 8000 && scroll <= 10_000) stage = 6;
+      else if (scroll > 4000 && scroll <= 6000) stage = 3;
+      else if (scroll > 6000 && scroll <= 7000) stage = 4;
+      else if (scroll > 7000 && scroll <= 8000) stage = 5;
+      else if (scroll > 9000 && scroll <= 10_000) stage = 6;
       setStage(stage);
     };
 
@@ -60,6 +60,11 @@ const Home: NextPage = () => {
             <Projects 
               showTop={stage >= 3 && stage <= 5} 
               showMiddle={stage === 4 || stage === 5}
+              showBottom={stage === 5}
+            />
+            <ProjectsMobile
+              showTop={stage === 3} 
+              showMiddle={stage === 4}
               showBottom={stage === 5}
             />
             <ContactMe show={stage === 6} openContact={() => setModalType("contact")}/>

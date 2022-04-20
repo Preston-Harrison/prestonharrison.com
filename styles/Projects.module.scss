@@ -9,6 +9,10 @@
     flex-direction: column;
     justify-content: space-between;
 
+    @media screen and (max-width: screen.$small) {
+        display: none;
+    }
+
     h1 {
         margin: 0;
         min-width: max-content;
@@ -46,6 +50,55 @@
             }
         }
             
+    }
+
+    .expand-out {
+        animation: animateOut 0.5s ease-out forwards;
+    }
+
+    .retract-in {
+        animation: animateIn 0.5s ease-out forwards;
+    }
+}
+
+.project-container-mobile {
+    position: fixed;
+    padding: 17.5vh 12.5vw;
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    @media screen and (max-width: screen.$small) {
+        display: block;
+    }
+
+    >div {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: calc(100% - 35vh);
+
+        h1 {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        hr {
+            margin: 0;
+            height: 4px;
+            background-color: #ffffff;
+        }
+
+        .code-demo-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                width: 100%;
+            }
+        }
     }
 
     .expand-out {

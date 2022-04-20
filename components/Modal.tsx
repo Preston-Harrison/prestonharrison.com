@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Modal.module.scss';
 import ContactForm from './ContactForm';
+import Menu from './Menu';
 
 export type ModalType = "contact" | "menu" | null;
 
@@ -18,6 +19,7 @@ const Modal = ({ type, closeModal }: Props) => {
         close
       </div>
       {type === "contact" && <ContactForm />}
+      {type === "menu" && <Menu closeModal={closeModal}/>}
     </div>
   )
 }
