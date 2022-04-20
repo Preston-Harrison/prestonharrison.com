@@ -4,16 +4,20 @@ import React from 'react';
 import ThreeJSCanvas from '../components/Canvas/ThreeJSCanvas';
 import ContactMe from '../components/ContactMe';
 import Header from '../components/Header';
+import LoadingScreen from '../components/LoadingScreen';
 import Modal, { ModalType } from '../components/Modal';
 import { Projects, ProjectsMobile } from '../components/Projects';
 import TitleCard from '../components/Title';
 import WhoAmI from '../components/WhoAmI';
 import styles from '../styles/Home.module.scss';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const MAX_SCROLL = 10_000;
 
 const Home: NextPage = () => {
   const [stage, setStage] = React.useState<number>(1);
+  const [loadedPointCloud, setLoadedPointCloud] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -46,33 +50,37 @@ const Home: NextPage = () => {
           <meta name="description" content="Preston Harrison's website and portfolio" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <ThreeJSCanvas />
+        <ThreeJSCanvas onLoad={() => setLoadedPointCloud(true)}/>
         <Modal type={modalType} closeModal={() => setModalType(null)}/>
-        <header>
-          <Header openMenu={() => setModalType("menu")}/>
-        </header>
-        <main>
-          <div className={styles.container} style={{ 
-            height: MAX_SCROLL, 
-          }}>
-            <TitleCard show={stage === 1} />
-            <WhoAmI show={stage === 2}/>
-            <Projects 
-              showTop={stage >= 3 && stage <= 5} 
-              showMiddle={stage === 4 || stage === 5}
-              showBottom={stage === 5}
-            />
-            <ProjectsMobile
-              showTop={stage === 3} 
-              showMiddle={stage === 4}
-              showBottom={stage === 5}
-            />
-            <ContactMe show={stage === 6} openContact={() => setModalType("contact")}/>
+        {!loadedPointCloud && <LoadingScreen />}
+        <div style={{ opacity: loadedPointCloud ? 1 : 0 }}>
+            <header>
+              <Header openMenu={() => setModalType("menu")}/>
+            </header>
+            <main>
+              <div className={styles.container} style={{ 
+                height: MAX_SCROLL, 
+              }}>
+                <TitleCard show={stage === 1} />
+                <WhoAmI show={stage === 2}/>
+                <Projects 
+                  showTop={stage >= 3 && stage <= 5} 
+                  showMiddle={stage === 4 || stage === 5}
+                  showBottom={stage === 5}
+                />
+                <ProjectsMobile
+                  showTop={stage === 3} 
+                  showMiddle={stage === 4}
+                  showBottom={stage === 5}
+                />
+                <ContactMe show={stage === 6} openContact={() => setModalType("contact")}/>
+              </div>
+               <div id={styles["scroll-down"]} className={stage <= 1 ? 'fade-in' : 'fade-out'}>
+                 Scroll Down
+                </div>
+            </main>
           </div>
-        </main>
-        <footer>
-
-        </footer>
+          <ToastContainer />
       </div>
   )
 }

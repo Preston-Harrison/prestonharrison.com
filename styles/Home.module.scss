@@ -1,3 +1,20 @@
+@use './screen';
+
 .container {
     display: fixed;
+}
+
+#scroll-down {
+    z-index: 2;
+    color: white;
+    position: fixed;
+    transform: none;
+    bottom: 3rem;
+    right: auto;
+    width: 100%;
+    text-align: center;
+
+    @media screen and (max-width: screen.$small) {
+        bottom: 2rem;
+    }
 }

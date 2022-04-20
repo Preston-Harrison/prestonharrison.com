@@ -4,7 +4,11 @@ import OrbitControls from './OrbitControls';
 import PointField from './PointField';
 import CameraScrollControls from './CameraScrollControls';
 
-const ThreeJSCanvas = () => {
+type Props = {
+    onLoad: () => void;
+}
+
+const ThreeJSCanvas = ({ onLoad }: Props) => {
     // Stops serverside rendering of animations (next js specific)
     const [domLoaded, setDomLoaded] = React.useState(false);
 
@@ -24,7 +28,7 @@ const ThreeJSCanvas = () => {
     return (
         <Canvas style={canvasConfig}>
             <OrbitControls/>
-            <PointField />
+            <PointField onLoad={onLoad} />
             <CameraScrollControls />
         </Canvas>
     )

@@ -2,7 +2,11 @@ import React from 'react';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
 import * as THREE from 'three';
 
-const PointField = () => {
+type Props = {
+  onLoad: () => void;
+}
+
+const PointField = ({ onLoad }: Props) => {
   const pointsRef = React.useRef<THREE.Points>();
   const [geometry, setGeometry] = React.useState<THREE.BufferGeometry>();
   const [material, setMaterial] = React.useState<THREE.PointsMaterial>();
@@ -20,6 +24,7 @@ const PointField = () => {
       material.vertexColors = true;
       setMaterial(material);
       setGeometry(geometry);
+      onLoad();
     });
   }, []);
 
