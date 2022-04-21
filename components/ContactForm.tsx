@@ -2,14 +2,6 @@ import React from 'react'
 import styles from '../styles/ContactForm.module.scss'
 
 const ContactForm = () => {
-    const [name, setName] = React.useState('')
-    const [contact, setContact] = React.useState('')
-    const [message, setMessage] = React.useState('')
-
-    const handleSubmit = () => {
-        console.log(name, contact, message);
-    }
-
     return (
         <form 
             className={styles['contact-form-container']} 

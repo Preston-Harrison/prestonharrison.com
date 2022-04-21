@@ -3,7 +3,7 @@ import styles from '../styles/Menu.module.scss';
 
 const placeToScroll = {
     who: 2001,
-    projects: 4001,
+    projects: 6200,
     contact: 9001,
 }
 

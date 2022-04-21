@@ -10,8 +10,6 @@ import { Projects, ProjectsMobile } from '../components/Projects';
 import TitleCard from '../components/Title';
 import WhoAmI from '../components/WhoAmI';
 import styles from '../styles/Home.module.scss';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export const MAX_SCROLL = 10_000;
 
@@ -25,9 +23,9 @@ const Home: NextPage = () => {
       let stage = -1;
       if (scroll < 1000) stage = 1;
       else if (scroll > 2000 && scroll <= 3000) stage = 2;
-      else if (scroll > 4000 && scroll <= 6000) stage = 3;
-      else if (scroll > 6000 && scroll <= 7000) stage = 4;
-      else if (scroll > 7000 && scroll <= 8000) stage = 5;
+      else if (scroll > 4000 && scroll <= 5000) stage = 3;
+      else if (scroll > 5000 && scroll <= 6000) stage = 4;
+      else if (scroll > 6000 && scroll <= 8000) stage = 5;
       else if (scroll > 9000 && scroll <= 10_000) stage = 6;
       setStage(stage);
     };
@@ -80,7 +78,6 @@ const Home: NextPage = () => {
                 </div>
             </main>
           </div>
-          <ToastContainer />
       </div>
   )
 }

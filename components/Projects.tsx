@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Projects.module.scss';
 import { PROJECTS } from '../utils/projects';
+import codeIcon from '../styles/CodeIcon.module.scss';
 
 type Props = {
     showTop: boolean;
@@ -10,16 +11,36 @@ type Props = {
 
 const DemoIcon = ({ link = "#" }: { link?: string }) => {
     return (
-        <a href={link} target="_blank" rel="noopener noreferrer">
-            Demo
+        <a className={codeIcon["button"]} href={link}>
+            <div className={codeIcon["hex"]}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div className={codeIcon["hex"]}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <span>Demo</span>
         </a>
     )
 };
 
 const CodeIcon = ({ link = "#" }: { link?: string }) => {
     return (
-        <a href={link} target="_blank" rel="noopener noreferrer">
-            Code
+        <a className={codeIcon["button"]} href={link}>
+            <div className={codeIcon["hex"]}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div className={codeIcon["hex"]}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <span>&lt;/&gt;</span>
         </a>
     )
 };
@@ -37,41 +58,47 @@ const ProjectsMobile = ({ showTop, showMiddle, showBottom }: Props) => {
         <div className={styles["project-container-mobile"]}>
             <div className={top}>
                 <div>
+                    <div className={styles["header"]}>
                     <h1>{PROJECTS[0].name}</h1>
-                <hr className={expandTop}/>
-                <p>
-                    {PROJECTS[0].description}
-                </p>
-                </div>
-                <div className={styles["code-demo-button-container"]}>
-                    <button>Code</button>
-                    <button>Demo</button>
+                    <div>
+                        <CodeIcon link={PROJECTS[0].code} />
+                        <DemoIcon link={PROJECTS[0].demo} />
+                    </div>
+                    </div>
+                    <hr className={expandTop}/>
+                    <p>
+                        {PROJECTS[0].description}
+                    </p>
                 </div>
             </div>
             <div className={middle}>
                 <div>
+                    <div className={styles["header"]}>
                     <h1>{PROJECTS[1].name}</h1>
-                <hr className={expandMiddle}/>
-                <p>
-                    {PROJECTS[1].description}
-                </p>
-                </div>
-                <div className={styles["code-demo-button-container"]}>
-                    <button>Code</button>
-                    <button>Demo</button>
+                    <div>
+                        <CodeIcon link={PROJECTS[1].code} />
+                        <DemoIcon link={PROJECTS[1].demo} />
+                    </div>
+                    </div>
+                    <hr className={expandMiddle}/>
+                    <p>
+                        {PROJECTS[1].description}
+                    </p>
                 </div>
             </div>
             <div className={bottom}>
                 <div>
+                    <div className={styles["header"]}>
                     <h1>{PROJECTS[2].name}</h1>
-                <hr className={expandBottom}/>
-                <p>
-                    {PROJECTS[2].description}
-                </p>
-                </div>
-                <div className={styles["code-demo-button-container"]}>
-                    <button>Code</button>
-                    <button>Demo</button>
+                    <div>
+                        <CodeIcon link={PROJECTS[2].code} />
+                        <DemoIcon link={PROJECTS[2].demo} />
+                    </div>
+                    </div>
+                    <hr className={expandBottom}/>
+                    <p>
+                        {PROJECTS[2].description}
+                    </p>
                 </div>
             </div>
         </div>
@@ -94,8 +121,8 @@ const Projects = ({ showTop, showMiddle, showBottom }: Props) => {
             <div className={top}>
                 <h1>{PROJECTS[0].name}</h1>
                 <div className={styles['icons']}>
-                    <CodeIcon />
-                    <DemoIcon />
+                    <CodeIcon link={PROJECTS[0].code} />
+                    <DemoIcon link={PROJECTS[0].demo} />
                 </div>
             </div>
             <hr className={expandTop}/>
@@ -106,8 +133,8 @@ const Projects = ({ showTop, showMiddle, showBottom }: Props) => {
         <div className={styles["float-right"]}>
             <div className={middle}>
                 <div className={styles['icons']}>
-                    <CodeIcon />
-                    <DemoIcon />
+                    <CodeIcon link={PROJECTS[1].code} />
+                    <DemoIcon link={PROJECTS[1].demo} />
                 </div>
                 <h1>{PROJECTS[1].name}</h1>
             </div>
@@ -120,8 +147,8 @@ const Projects = ({ showTop, showMiddle, showBottom }: Props) => {
             <div className={bottom}>
                 <h1>{PROJECTS[2].name}</h1>
                 <div className={styles['icons']}>
-                    <CodeIcon />
-                    <DemoIcon />
+                    <CodeIcon link={PROJECTS[2].code} />
+                    <DemoIcon link={PROJECTS[2].demo} />
                 </div>
             </div>
             <hr className={expandBottom}/>

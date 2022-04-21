@@ -79,9 +79,13 @@ button {
 }
 
 .blur-container {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  $blur: 12px;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  
+  @-moz-document url-prefix() {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 }
 
 .bring-to-back {

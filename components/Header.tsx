@@ -16,7 +16,7 @@ const Header = ({ openMenu }: Props) => {
       </svg>
         <button>
             <div>Resume</div>
-            <div className={styles["icon"]}>&#11123;</div>
+            <div className={styles["icon"]}>&#8676;</div>
         </button>
     </div>
   )

@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
     @media screen and (max-width: screen.$small) {
         display: none;
@@ -37,11 +38,21 @@
     }
 
     .float-right {
+        >div {
+            flex-direction: row-reverse;
+        }
+
+        .icons {
+            margin-left: 2rem;
+        }
+
         @media screen and (min-width: 1200px) {
             align-self: flex-end;
-            div {
-                text-align: right;
+            
+            >div {
+                flex-direction: row;
             }
+
             p {
                 text-align: right;
             }
@@ -50,6 +61,11 @@
             }
         }
             
+    }
+
+    .icons {
+        position: relative;
+        top: 1rem;
     }
 
     .expand-out {
@@ -69,7 +85,8 @@
     display: none;
 
     @media screen and (max-width: screen.$small) {
-        display: block;
+        display: flex;
+        justify-content: center;
     }
 
     >div {
@@ -79,25 +96,29 @@
         flex-direction: column;
         height: calc(100% - 35vh);
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            >div {
+                position: relative;
+                top: 1.3rem;
+                left: 1.5rem;
+            }
+        }
+
         h1 {
             margin: 1rem 0;
             text-align: center;
+            font-size: 1.5rem;
         }
 
         hr {
             margin: 0;
             height: 4px;
             background-color: #ffffff;
-        }
-
-        .code-demo-button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            button {
-                width: 100%;
-            }
         }
     }
 
