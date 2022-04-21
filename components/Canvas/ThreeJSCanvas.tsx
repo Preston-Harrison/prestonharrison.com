@@ -14,7 +14,7 @@ const ThreeJSCanvas = ({ onLoad }: Props) => {
 
     React.useEffect(() => {
         setDomLoaded(true);
-    })
+    }, [])
 
     if (!domLoaded) return null;
 

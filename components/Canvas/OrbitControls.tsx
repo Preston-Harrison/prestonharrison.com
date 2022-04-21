@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls as THREEOrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import * as THREE from 'three';
 
 type Props = {
   lock?: boolean;
@@ -16,7 +15,7 @@ const OrbitControls = ({ lock = false }: Props) => {
       _controls.enablePan = false;
     }
     return _controls;
-  }, []);
+  }, [camera, gl.domElement, lock]);
 
   useFrame(controls.update);
 

@@ -26,7 +26,7 @@ const PointField = ({ onLoad }: Props) => {
       setGeometry(geometry);
       onLoad();
     });
-  }, []);
+  }, [onLoad]);
 
   return (
     <points
