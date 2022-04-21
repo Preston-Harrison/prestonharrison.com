@@ -15,13 +15,14 @@
         font-weight: 700;
         width: max-content;
         position: fixed;
-        top: calc(50% - 7rem);
+        top: 0;
+        transform: translateY(calc(50vh - 7rem));
         margin: 0;
         transition: 1s all ease-out;
+        will-change: transform, scale;
 
         &.moveToTop {
-            font-size: 2rem;
-            top: 3.25rem;
+            transform: translateY(2rem) scale(0.5);
         }
 
         @media screen and (max-width: screen.$small) {
@@ -30,7 +31,7 @@
             top: calc(50% - 3rem);
 
             &.moveToTop {
-                font-size: 1rem;
+                transform: translateY(2rem) scale(0.5);
                 opacity: 0;
             }
         }

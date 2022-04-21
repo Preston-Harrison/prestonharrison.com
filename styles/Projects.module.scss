@@ -23,6 +23,7 @@
         margin: 0;
         height: 6px;
         background-color: #ffffff;
+        transform-origin: left;
     }
 
     >div {
@@ -58,6 +59,7 @@
             }
             hr {
                 margin-left: auto;
+                transform-origin: right;
             }
         }
             
@@ -119,6 +121,7 @@
             margin: 0;
             height: 4px;
             background-color: #ffffff;
+            transform-origin: left;
         }
     }
 
@@ -133,17 +136,17 @@
 
 @keyframes animateOut {
     0% {
-        width: 0;
+        transform: scaleX(0);
     }
 
     100% {
-        width: 100%;
+        transform: scaleX(1);
     }
 }
 
 @keyframes animateIn {
     0% {
-        width: 100%;
+        transform: scaleX(1);
     }
 
     99% {
@@ -151,7 +154,7 @@
     }
 
     100% {
-        width: 0;
+        transform: scaleX(0);
         opacity: 0;
     }
 }
