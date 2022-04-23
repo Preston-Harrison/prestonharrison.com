@@ -1,15 +1,15 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import ThreeJSCanvas from '../components/Canvas/ThreeJSCanvas';
-import ContactMe from '../components/ContactMe';
-import Header from '../components/Header';
-import LoadingScreen from '../components/LoadingScreen';
-import Modal, { ModalType } from '../components/Modal';
-import { Projects, ProjectsMobile } from '../components/Projects';
-import TitleCard from '../components/Title';
-import WhoAmI from '../components/WhoAmI';
-import styles from '../styles/Home.module.scss';
+import ThreeJSCanvas from '../components/Index/Canvas/ThreeJSCanvas';
+import ContactMe from '../components/Index/ContactMe';
+import Header from '../components/Index/Header';
+import LoadingScreen from '../components/Index/LoadingScreen';
+import Modal, { ModalType } from '../components/Index/Modal';
+import { Projects, ProjectsMobile } from '../components/Index/Projects';
+import TitleCard from '../components/Index/Title';
+import WhoAmI from '../components/Index/WhoAmI';
+import styles from '../styles/Index/Home.module.scss';
 
 export const MAX_SCROLL = 10_000;
 
@@ -41,44 +41,46 @@ const Home: NextPage = () => {
     else document.body.classList.remove('modal-open');
   }, [modalType]);
 
+  const onLoad = React.useCallback(() => setLoadedPointCloud(true), []);
+
   return (
-      <div>
-        <Head>
-          <title>Preston Harrison</title>
-          <meta name="description" content="Preston Harrison's website and portfolio" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <ThreeJSCanvas onLoad={() => setLoadedPointCloud(true)}/>
-        <Modal type={modalType} closeModal={() => setModalType(null)}/>
-        {!loadedPointCloud && <LoadingScreen />}
-        <div style={{ opacity: loadedPointCloud ? 1 : 0 }}>
-            <header>
-              <Header openMenu={() => setModalType("menu")}/>
-            </header>
-            <main>
-              <div className={styles.container} style={{ 
-                height: MAX_SCROLL, 
-              }}>
-                <TitleCard show={stage === 1} />
-                <WhoAmI show={stage === 2}/>
-                <Projects 
-                  showTop={stage >= 3 && stage <= 5} 
-                  showMiddle={stage === 4 || stage === 5}
-                  showBottom={stage === 5}
-                />
-                <ProjectsMobile
-                  showTop={stage === 3} 
-                  showMiddle={stage === 4}
-                  showBottom={stage === 5}
-                />
-                <ContactMe show={stage === 6} openContact={() => setModalType("contact")}/>
-              </div>
-               <div id={styles["scroll-down"]} className={stage <= 1 ? 'fade-in' : 'fade-out'}>
-                 Scroll Down
-                </div>
-            </main>
+    <div>
+      <Head>
+        <title>Preston Harrison</title>
+        <meta name="description" content="Preston Harrison's website and portfolio" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ThreeJSCanvas onLoad={onLoad} />
+      <Modal type={modalType} closeModal={() => setModalType(null)} />
+      {!loadedPointCloud && <LoadingScreen />}
+      <div style={{ opacity: loadedPointCloud ? 1 : 0 }}>
+        <header>
+          <Header openMenu={() => setModalType("menu")} />
+        </header>
+        <main>
+          <div className={styles.container} style={{
+            height: MAX_SCROLL,
+          }}>
+            <TitleCard show={stage === 1} />
+            <WhoAmI show={stage === 2} />
+            <Projects
+              showTop={stage >= 3 && stage <= 5}
+              showMiddle={stage === 4 || stage === 5}
+              showBottom={stage === 5}
+            />
+            <ProjectsMobile
+              showTop={stage === 3}
+              showMiddle={stage === 4}
+              showBottom={stage === 5}
+            />
+            <ContactMe show={stage === 6} openContact={() => setModalType("contact")} />
           </div>
+          <div id={styles["scroll-down"]} className={stage <= 1 ? 'fade-in' : 'fade-out'}>
+            Scroll Down
+          </div>
+        </main>
       </div>
+    </div>
   )
 }
 

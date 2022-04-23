@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Modal.module.scss';
+import styles from '../../styles/Index/Modal.module.scss';
 import ContactForm from './ContactForm';
 import Menu from './Menu';
 
@@ -19,7 +19,7 @@ const Modal = ({ type, closeModal }: Props) => {
         close
       </div>
       {type === "contact" && <ContactForm />}
-      {type === "menu" && <Menu closeModal={closeModal}/>}
+      {type === "menu" && <Menu closeModal={closeModal} />}
     </div>
   )
 }

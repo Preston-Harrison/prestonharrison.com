@@ -1,5 +1,5 @@
-@use './colors';
-@use './screen';
+@use '../colors';
+@use '../screen';
 
 .title-container {
     display: flex;
@@ -28,7 +28,7 @@
         @media screen and (max-width: screen.$small) {
             font-size: 1.5rem;
             text-align: center;
-            top: calc(50% - 3rem);
+            top: 3rem;
 
             &.moveToTop {
                 transform: translateY(2rem) scale(0.5);

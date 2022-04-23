@@ -1,5 +1,5 @@
 import { useFrame, useThree } from "@react-three/fiber";
-import { MAX_SCROLL } from "../../pages";
+import { MAX_SCROLL } from "../../../pages";
 
 const slerp = (startValue: number, endValue: number, startIncrement: number, endIncrement: number, currentIncrement: number) => {
   return startValue + (endValue - startValue) * ((currentIncrement - startIncrement) / (endIncrement - startIncrement));

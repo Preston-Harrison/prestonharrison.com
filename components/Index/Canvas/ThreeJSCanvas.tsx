@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
 import { Canvas } from '@react-three/fiber';
-import OrbitControls from './OrbitControls';
 import PointField from './PointField';
 import CameraScrollControls from './CameraScrollControls';
 
@@ -9,7 +8,7 @@ type Props = {
 }
 
 const ThreeJSCanvas = ({ onLoad }: Props) => {
-    // Stops serverside rendering of animations (next js specific)
+    // Stops serverside rendering of model (next js specific)
     const [domLoaded, setDomLoaded] = React.useState(false);
 
     React.useEffect(() => {
@@ -27,7 +26,6 @@ const ThreeJSCanvas = ({ onLoad }: Props) => {
 
     return (
         <Canvas style={canvasConfig}>
-            <OrbitControls/>
             <PointField onLoad={onLoad} />
             <CameraScrollControls />
         </Canvas>

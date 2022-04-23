@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../styles/Menu.module.scss';
+import styles from '../../styles/Index/Menu.module.scss';
 
 const placeToScroll = {
-    who: 2001,
-    projects: 6200,
-    contact: 9001,
+  who: 2001,
+  projects: 6200,
+  contact: 9001,
 }
 
 const Menu = ({ closeModal }: { closeModal: () => void }) => {
@@ -17,11 +17,11 @@ const Menu = ({ closeModal }: { closeModal: () => void }) => {
   }
   return (
     <div className={styles['menu-container']}>
-        <h1 onClick={handleClick("who")}>Who am I</h1>
-        <div className={styles['separator']} />
-        <h1 onClick={handleClick("projects")}>Projects</h1>
-        <div className={styles['separator']} />
-        <h1 onClick={handleClick("contact")}>Contact</h1>
+      <h1 onClick={handleClick("who")}>Who am I</h1>
+      <div className={styles['separator']} />
+      <h1 onClick={handleClick("projects")}>Projects</h1>
+      <div className={styles['separator']} />
+      <h1 onClick={handleClick("contact")}>Contact</h1>
     </div>
   )
 }

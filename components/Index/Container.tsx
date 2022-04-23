@@ -1,18 +1,18 @@
 import React from 'react';
-import styles from '../styles/Container.module.scss';
+import styles from '../../styles/Index/Container.module.scss';
 
 type Props = {
-    children: React.ReactNode;
-    size: "small" | "medium" | "large";
-    className?: string;
+  children: React.ReactNode;
+  size: "small" | "medium" | "large";
+  className?: string;
 }
 
 const Container = (props: Props) => {
   return (
-    <div 
+    <div
       id={styles["container-all"]}
       className={`${styles[`container-${props.size}`]} ${props.className ?? ""}`}>
-        {props.children}
+      {props.children}
     </div>
   )
 }
