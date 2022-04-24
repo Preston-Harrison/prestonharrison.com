@@ -1,0 +1,65 @@
+.container {
+    position: relative;
+
+    button {
+        &.active {
+            justify-content: space-between;
+        }
+        width: 100%;
+        background-color: black;
+        font-size: medium;
+        
+        &:hover {
+            background-color: white;
+        }
+
+        >div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        img {
+            display: block;
+            width: 32px;
+            height: auto;
+            margin-right: 1rem;
+        }
+    }
+
+    .list {
+        position: absolute;
+        width: 100%;
+        transform-origin: top;
+
+        &.list-open {
+            animation: dropdown 0.25s forwards ease-out;
+        }
+
+        &.list-closed {
+            animation: dropdown-close 0.25s forwards ease-out;
+        }
+
+        button {
+            justify-content: flex-start;
+        }
+    }
+}
+
+@keyframes dropdown {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes dropdown-close {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
+}

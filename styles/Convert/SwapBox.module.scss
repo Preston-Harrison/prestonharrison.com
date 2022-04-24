@@ -1,0 +1,31 @@
+.container {
+    padding-top: 10vh;
+    width: 50%;
+    margin: auto;
+
+    .from-token {
+        input {
+            margin-top: 1rem;
+            width: 100%;
+        }
+    }
+
+    .switch-tokens {
+        margin: 2rem auto;
+    }
+
+    .to-token {
+        input {
+            margin-top: 1rem;
+            width: 100%;
+        }
+    }
+
+    .convert-button {
+        margin-top: 2rem;
+        
+        button {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,120 @@
+import { ethers } from "ethers";
+
+type Token = {
+    address: string;
+    decimals: number;
+    symbol: string;
+    image: string;
+}
+
+export const TOKENS: Record<string, Token> = {
+    DAI: {
+        symbol: 'DAI',
+        decimals: 18,
+        address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+        image: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo.png'
+    },
+    MATIC: {
+        symbol: 'MATIC',
+        decimals: 18,
+        address: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+        image: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png'
+    },
+    USDC: {
+        symbol: 'USDC',
+        decimals: 6,
+        address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+        image: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo.png'
+    },
+}
+
+const adjustDecimals = (value: string, decimals: number): string =>
+    ethers.utils.parseUnits(value || "0", decimals).toString();
+
+type FetchQuoteArgs = {
+    fromSymbol: string;
+    toSymbol: string;
+    takerAddress: string | undefined;
+} & ({ sellAmount: string } | { buyAmount: string })
+
+type FetchQuoteResponse = {
+    quote: Quote;
+    convert: {
+        tx: ethers.PopulatedTransaction | null;
+        error: string | null;
+    }
+}
+
+const ZeroXQuoteUrl = 'https://polygon.api.0x.org/swap/v1/quote?';
+
+export const fetchQuote = async (args: FetchQuoteArgs): Promise<FetchQuoteResponse> => {
+    const fromToken = TOKENS[args.fromSymbol];
+    const toToken = TOKENS[args.toSymbol];
+    if (!fromToken || !toToken) {
+        throw new Error(`Invalid token symbol: ${args.fromSymbol} or ${args.toSymbol}`);
+    }
+    const params = new URLSearchParams({
+        sellToken: fromToken.address,
+        buyToken: toToken.address,
+    })
+    if ('sellAmount' in args) {
+        params.append('sellAmount', adjustDecimals(args.sellAmount, fromToken.decimals));
+    } else {
+        params.append('buyAmount', adjustDecimals(args.buyAmount, toToken.decimals));
+    }
+    const quotePromise = fetch(ZeroXQuoteUrl + params.toString());
+    let convertPromise: Promise<Response> | undefined = undefined;
+
+    if (args.takerAddress) {
+        params.append('takerAddress', args.takerAddress);
+        convertPromise = fetch(ZeroXQuoteUrl + params.toString());
+    }
+
+    const [quote, convert] = await Promise.all([quotePromise, convertPromise]);
+
+    const [quoteJson, convertJson] = await Promise.all([quote.json(), convert?.json()]);
+
+    const tx = convert?.status === 200 ? {
+        to: convertJson.to,
+        data: convertJson.data,
+        value: convertJson.value
+    } : null;
+
+    let error;
+    if (convert?.status === 200) {
+        error = null;
+    } else if (!convertJson) {
+        error = "NO_ADDRESS"
+    } else if (typeof convertJson.values?.message === "string") {
+        error = convertJson.values?.message;
+    }
+
+    return {
+        quote: quoteJson,
+        convert: {
+            tx,
+            error
+        }
+    };
+}
+
+export type Quote = {
+    chainId: number;
+    price: string;
+    guaranteedPrice: string;
+    to: string;
+    data: string;
+    value: string;
+    gas: string;
+    estimatedGas: string;
+    gasPrice: string;
+    protocolFee: string;
+    minimumProtocolFee: string;
+    buyTokenAddress: string;
+    sellTokenAddress: string;
+    buyAmount: string;
+    sellAmount: string;
+    allowanceTarget: string;
+    sellTokenToEthRate: string;
+    buyTokenToEthRate: string;
+}
