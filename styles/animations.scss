@@ -3,7 +3,11 @@
 }
 
 .fade-in-delay {
-    animation: fade-in 1s ease-in-out forwards;
+    animation: fade-in-delay 1s ease-in-out forwards;
+}
+
+.fade-in-fast {
+  animation: fade-in 0.2s ease-in-out forwards;
 }
 
 @keyframes fade-in-delay {
@@ -33,6 +37,10 @@
   
 .fade-out {
     animation: fade-out 0.5s ease-in-out forwards;
+}
+
+.fade-out-fast {
+    animation: fade-out 0.2s ease-in-out forwards;
 }
 
 @keyframes fade-out {

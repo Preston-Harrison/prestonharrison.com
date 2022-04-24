@@ -23,9 +23,17 @@
         }
     }
 
-    .convert-button-container {
-        margin-top: 2rem;
+    .details {
+        margin: 2rem 0;
 
+        >div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .convert-button-container {
         button {
             width: 100%;
         }

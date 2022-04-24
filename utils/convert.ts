@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 
 type Token = {
     address: string;
@@ -6,6 +6,8 @@ type Token = {
     symbol: string;
     image: string;
 }
+
+const MATIC_DECIMALS = 18;
 
 export const TOKENS: Record<string, Token> = {
     DAI: {
@@ -16,7 +18,7 @@ export const TOKENS: Record<string, Token> = {
     },
     MATIC: {
         symbol: 'MATIC',
-        decimals: 18,
+        decimals: MATIC_DECIMALS,
         address: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
         image: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/polygon/assets/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo.png'
     },
@@ -43,6 +45,15 @@ type FetchQuoteResponse = {
         tx: ethers.PopulatedTransaction | null;
         error: string | null;
     }
+}
+
+export const getAllowanceTx = async (symbol: string, signer: ethers.Signer, allowanceTarget: string) => {
+    const abi = ["function approve(address spender, uint256 amount) returns (bool)"]
+    if (!TOKENS[symbol]) throw new Error("Token not found");
+
+    const contract = new ethers.Contract(TOKENS[symbol].address, abi, signer);
+    const tx = contract.populateTransaction.approve(allowanceTarget, ethers.constants.MaxUint256);
+    return tx;
 }
 
 const ZeroXQuoteUrl = 'https://polygon.api.0x.org/swap/v1/quote?';
@@ -77,7 +88,7 @@ export const fetchQuote = async (args: FetchQuoteArgs): Promise<FetchQuoteRespon
     const tx = convert?.status === 200 ? {
         to: convertJson.to,
         data: convertJson.data,
-        value: convertJson.value
+        value: BigNumber.from(convertJson.value)
     } : null;
 
     let error;
@@ -119,4 +130,11 @@ export type Quote = {
     allowanceTarget: string;
     sellTokenToEthRate: string;
     buyTokenToEthRate: string;
+}
+
+/**
+ * @returns amount of second token equal to first token.
+ */
+export const displayRatio = (firstAmountToEth: string, secondAmountToEth: string, precision = 4) => {
+    return (+secondAmountToEth / +firstAmountToEth).toFixed(precision);
 }

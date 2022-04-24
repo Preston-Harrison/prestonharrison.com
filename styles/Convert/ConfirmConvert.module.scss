@@ -1,0 +1,56 @@
+@use '../colors';
+
+#modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+
+    .container {
+        min-width: 300px;
+        width: 60%;
+        max-width: 800px;
+        background-color: colors.$button-background;
+        border: 2px solid colors.$text-primary;
+        padding: 2rem 3rem;
+        font-size: large;
+
+        .row {
+            margin: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            margin-top: 2rem;
+            width: 100%;
+            font-size: large;
+        }
+
+        .top-bar {
+            width: 100%;
+            text-align: center;
+            position: relative;
+            margin-bottom: 2rem;
+
+            :nth-child(1) {
+                font-size: larger;
+            }
+
+            :nth-child(2) {
+                font-size: normal;
+                position: absolute;
+                right: 0;
+                transform: translateY(-100%);
+                cursor: pointer;
+            }
+        }
+    }
+}
