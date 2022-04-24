@@ -60,7 +60,7 @@ p {
 
 button {
   border: 2px solid white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: colors.$button-background;
   color: white;
   font-family: inherit;
   text-transform: uppercase;
@@ -79,24 +79,24 @@ button {
 
   &:disabled {
     border: 2px solid colors.$disabled;
-    background-color: lighten(colors.$background, 20%);
+    background-color: lighten(colors.$button-background, 20%);
     color: colors.$disabled;
     cursor: not-allowed;
 
     &:hover {
-      background-color: lighten(colors.$background, 20%);
+      background-color: lighten(colors.$button-background, 20%);
       color: colors.$disabled;
     }
   }
 
   &.alert {
     border-color: colors.$error-red;
-    background-color: colors.$background;
+    background-color: colors.$button-background;
     color: colors.$error-red;
     cursor: not-allowed;
 
     &:hover {
-        background-color: colors.$background;
+        background-color: colors.$button-background;
         color: colors.$error-red;
     }
 }
