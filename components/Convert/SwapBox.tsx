@@ -12,9 +12,12 @@ type Props = {
 }
 
 const DEBOUNCE = 500;
+const LOADING_TEXT = "loading..."
 
 let fetchFromQuoteId: NodeJS.Timeout;
 let fetchToQuoteId: NodeJS.Timeout;
+
+const canBeNumber = (value: string) => !isNaN(+value);
 
 const SwapBox = ({ address, signer, setSigner }: Props) => {
     const [currentFrom, setCurrentFrom] = React.useState<string>('DAI');
@@ -24,6 +27,7 @@ const SwapBox = ({ address, signer, setSigner }: Props) => {
     const [valueTo, setValueTo] = React.useState('');
 
     const [fillingInput, setFillingInput] = React.useState<"to" | "from">();
+    const [loading, setLoading] = React.useState(false);
 
     const [response, setResponse] = React.useState<{
         quote: Quote;
@@ -43,18 +47,20 @@ const SwapBox = ({ address, signer, setSigner }: Props) => {
 
     React.useEffect(() => {
         if (fillingInput === "from") return;
-        setResponse(undefined);
-        if (valueFrom === '') return setValueTo('');
+        if (+valueFrom === 0 || !canBeNumber(valueFrom)) return setValueTo('');
         if (fetchFromQuoteId) {
             clearTimeout(fetchFromQuoteId);
         }
         fetchFromQuoteId = setTimeout(async () => {
+            setLoading(true);
+            setResponse(undefined);
             const response = await fetchQuote({
                 fromSymbol: currentFrom,
                 toSymbol: currentTo,
                 sellAmount: valueFrom,
                 takerAddress: address,
             });
+            setLoading(false);
             setResponse(response);
             setValueTo(ethers.utils.formatUnits(response.quote.buyAmount, TOKENS[currentTo].decimals));
         }, DEBOUNCE);
@@ -63,18 +69,20 @@ const SwapBox = ({ address, signer, setSigner }: Props) => {
 
     React.useEffect(() => {
         if (fillingInput === "to") return;
-        setResponse(undefined);
-        if (valueTo === '') return setValueFrom('');
+        if (+valueTo === 0 || !canBeNumber(valueTo)) return setValueFrom('');
         if (fetchToQuoteId) {
             clearTimeout(fetchToQuoteId);
         }
         fetchToQuoteId = setTimeout(async () => {
+            setLoading(true);
+            setResponse(undefined);
             const response = await fetchQuote({
                 fromSymbol: currentFrom,
                 toSymbol: currentTo,
                 buyAmount: valueTo,
                 takerAddress: address,
             });
+            setLoading(false);
             setResponse(response);
             setValueFrom(ethers.utils.formatUnits(response.quote.sellAmount, TOKENS[currentFrom].decimals));
         }, DEBOUNCE);
@@ -96,25 +104,52 @@ const SwapBox = ({ address, signer, setSigner }: Props) => {
     const handleConvert = () => {
     }
 
-    let errorMessage = response?.convert.error;
+    let alertConvert = false; // alert convert disables convert by default
+    let disableConvert = false;
+    let errorMessage: string | null = null;
+
+    if (valueFrom === '' && valueTo === '') {
+        disableConvert = true;
+        errorMessage = "Please enter an amount"
+    } else if (response?.convert.error) {
+        alertConvert = true;
+        errorMessage = response?.convert.error;
+    }
 
     return (
         <div className={styles["container"]}>
             <div className={styles["from-token"]}>
                 <SelectToken current={currentFrom} onChange={setCurrentFrom} omit={currentTo} />
-                <input type="text" placeholder="from token amount" value={valueFrom} onChange={onChangeFrom} />
+                <input
+                    type="text"
+                    placeholder="from token amount"
+                    value={fillingInput === "from" && loading ? LOADING_TEXT : valueFrom}
+                    onChange={onChangeFrom}
+                    disabled={fillingInput === "from" && loading}
+                />
             </div>
-            <button className={styles['switch-tokens']} onClick={onSwitch}>
+            <button className={styles['switch-tokens']} onClick={onSwitch} disabled={loading}>
                 Switch
             </button>
             <div className={styles["to-token"]}>
                 <SelectToken current={currentTo} onChange={setCurrentTo} omit={currentFrom} />
-                <input type="text" placeholder="to token amount" value={valueTo} onChange={onChangeTo} />
+                <input
+                    type="text"
+                    placeholder="to token amount"
+                    value={fillingInput === "to" && loading ? LOADING_TEXT : valueTo}
+                    onChange={onChangeTo}
+                    disabled={fillingInput === "to" && loading}
+                />
             </div>
-            <div className={styles['convert-button']}>
-                {signer ? <button onClick={handleConvert}>
-                    {errorMessage ?? "Convert"}
-                </button> : <WalletConnectButton address={undefined} setSigner={setSigner} />}
+            <div className={styles['convert-button-container']}>
+                {signer ?
+                    <button
+                        onClick={handleConvert}
+                        className={`${styles['convert-button']} ${alertConvert ? "alert" : ""}`}
+                        disabled={alertConvert || loading || disableConvert}
+                    >
+                        {loading ? "LOADING..." : errorMessage ?? "Convert"}
+                    </button> : <WalletConnectButton address={undefined} setSigner={setSigner} />}
             </div>
         </div>
     )

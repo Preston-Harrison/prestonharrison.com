@@ -87,6 +87,8 @@ export const fetchQuote = async (args: FetchQuoteArgs): Promise<FetchQuoteRespon
         error = "NO_ADDRESS"
     } else if (typeof convertJson.values?.message === "string") {
         error = convertJson.values?.message;
+    } else if (typeof convertJson.reason === "string") {
+        error = convertJson.reason
     }
 
     return {

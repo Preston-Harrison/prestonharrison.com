@@ -57,7 +57,7 @@ const WalletConnectButton = (
 
     return (
         <div className={styles.walletConnectContainer}>
-            <button className={styles.connectWallet} onClick={connectWallet} disabled={!!address}>
+            <button className={styles.connectWallet} onClick={connectWallet} >
                 <FontAwesomeIcon icon={faWallet} />
                 {displayAddress || title}
             </button>

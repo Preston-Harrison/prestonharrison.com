@@ -1,3 +1,5 @@
+@use '../colors';
+
 .container {
     padding-top: 10vh;
     width: 50%;
@@ -21,9 +23,9 @@
         }
     }
 
-    .convert-button {
+    .convert-button-container {
         margin-top: 2rem;
-        
+
         button {
             width: 100%;
         }
