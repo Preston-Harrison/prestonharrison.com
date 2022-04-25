@@ -33,10 +33,10 @@ const SelectToken = ({ current, onChange, omit }: Props) => {
 
     return (
         <div ref={ref} className={styles["container"]}>
-            <button className={styles['active']} onClick={() => setIsOpen(!isOpen)}>
+            <button className={`${styles['active']} ${isOpen ? styles["open"] : ""}`} onClick={() => setIsOpen(!isOpen)}>
                 <div>
                     <img src={TOKENS[current].image} alt={current} />
-                    <div>{current}</div>
+                    <div>{TOKENS[current].name} ({current})</div>
                 </div>
                 <div>{isOpen ? "\u2303" : "\u2304"}</div>
             </button>
@@ -46,7 +46,7 @@ const SelectToken = ({ current, onChange, omit }: Props) => {
                         <button onClick={() => handleMenuClick(token.symbol)} key={token.symbol}>
                             <img src={token.image} alt={token.symbol} />
                             <div>
-                                {token.symbol}
+                                {token.name} ({token.symbol})
                             </div>
                         </button>
                     ))}
