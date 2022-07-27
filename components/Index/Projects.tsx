@@ -11,7 +11,7 @@ type Props = {
 
 const DemoIcon = ({ link = "#" }: { link?: string }) => {
     return (
-        <a className={codeIcon["button"]} href={link}>
+        <a className={codeIcon["button"]} href={link} target="_blank">
             <div className={codeIcon["hex"]}>
                 <div></div>
                 <div></div>
@@ -29,7 +29,7 @@ const DemoIcon = ({ link = "#" }: { link?: string }) => {
 
 const CodeIcon = ({ link = "#" }: { link?: string }) => {
     return (
-        <a className={codeIcon["button"]} href={link}>
+        <a className={codeIcon["button"]} href={link} target="_blank">
             <div className={codeIcon["hex"]}>
                 <div></div>
                 <div></div>
@@ -77,7 +77,7 @@ const ProjectsMobile = ({ showTop, showMiddle, showBottom }: Props) => {
                         <h1>{PROJECTS[1].name}</h1>
                         <div>
                             <CodeIcon link={PROJECTS[1].code} />
-                            <DemoIcon link={PROJECTS[1].demo} />
+                            {/* <DemoIcon link={PROJECTS[1].demo} /> */}
                         </div>
                     </div>
                     <hr className={expandMiddle} />
@@ -92,7 +92,7 @@ const ProjectsMobile = ({ showTop, showMiddle, showBottom }: Props) => {
                         <h1>{PROJECTS[2].name}</h1>
                         <div>
                             <CodeIcon link={PROJECTS[2].code} />
-                            <DemoIcon link={PROJECTS[2].demo} />
+                            {/* <DemoIcon link={PROJECTS[2].demo} /> */}
                         </div>
                     </div>
                     <hr className={expandBottom} />
@@ -134,7 +134,7 @@ const Projects = ({ showTop, showMiddle, showBottom }: Props) => {
                 <div className={middle}>
                     <div className={styles['icons']}>
                         <CodeIcon link={PROJECTS[1].code} />
-                        <DemoIcon link={PROJECTS[1].demo} />
+                        {/* <DemoIcon link={PROJECTS[1].demo} /> */}
                     </div>
                     <h1>{PROJECTS[1].name}</h1>
                 </div>
@@ -148,7 +148,7 @@ const Projects = ({ showTop, showMiddle, showBottom }: Props) => {
                     <h1>{PROJECTS[2].name}</h1>
                     <div className={styles['icons']}>
                         <CodeIcon link={PROJECTS[2].code} />
-                        <DemoIcon link={PROJECTS[2].demo} />
+                        {/* <DemoIcon link={PROJECTS[2].demo} /> */}
                     </div>
                 </div>
                 <hr className={expandBottom} />

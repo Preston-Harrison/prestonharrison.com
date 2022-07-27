@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from './Container';
 import styles from '../../styles/Index/WhoAmI.module.scss';
 
 type Props = {
@@ -12,9 +11,13 @@ const WhoAmI = ({ show }: Props) => {
       <h1 className={show ? "fade-in" : "fade-out"}>Who am I?</h1>
       <hr className={show ? styles["animateIn"] : styles["animateOut"]} />
       <p className={show ? "fade-in" : "fade-out"}>
-        I am a full stack web developer with a passion for blockchain and
-        cryptocurrency. I have a background in finance and a background in
-        business. Blah blah blah random text etc etc
+        Hi, my name is Preston. I'm a full stack / blockchain developer 
+        with an interest in web technology and cryptocurrencies. I'm
+        proficient in Javascript / Typescript, React, and Solidity.
+        <br /><br />
+        I'm currently working as a developer at DLTx, and studying
+        Computer Science at the University of Queensland. I love learning,
+        and am always on the lookout for new projects / skills to pick up.
       </p>
     </div>
   )

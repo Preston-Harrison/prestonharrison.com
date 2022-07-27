@@ -16,6 +16,7 @@
 
     h1 {
         margin: 0;
+        font-size: 1.75rem;
         min-width: max-content;
     }
 
@@ -68,6 +69,7 @@
     .icons {
         position: relative;
         top: 1rem;
+        display: flex;
     }
 
     .expand-out {
@@ -97,6 +99,7 @@
         justify-content: space-between;
         flex-direction: column;
         height: calc(100% - 35vh);
+        width: 90%;
 
         .header {
             display: flex;
@@ -108,13 +111,14 @@
                 position: relative;
                 top: 1.3rem;
                 left: 1.5rem;
+                display: flex;
             }
         }
 
         h1 {
             margin: 1rem 0;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
 
         hr {

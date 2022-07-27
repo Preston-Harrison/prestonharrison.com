@@ -6,7 +6,7 @@ type Props = {
     openContact: () => void;
 }
 
-const TYPEWRITER_WORDS = [" website?", " app?", "web3 platform?", " smart contract?"];
+const TYPEWRITER_WORDS = [" website?", " app?", " smart contract?"];
 
 const ContactMe = ({ show, openContact }: Props) => {
     const [typewriter, setTypewriter] = React.useState('');
