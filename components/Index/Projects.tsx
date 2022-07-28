@@ -11,7 +11,7 @@ type Props = {
 
 const DemoIcon = ({ link = "#" }: { link?: string }) => {
     return (
-        <a className={codeIcon["button"]} href={link} target="_blank">
+        <a className={codeIcon["button"]} href={link} target="_blank" rel="noreferrer">
             <div className={codeIcon["hex"]}>
                 <div></div>
                 <div></div>
@@ -29,7 +29,7 @@ const DemoIcon = ({ link = "#" }: { link?: string }) => {
 
 const CodeIcon = ({ link = "#" }: { link?: string }) => {
     return (
-        <a className={codeIcon["button"]} href={link} target="_blank">
+        <a className={codeIcon["button"]} href={link} target="_blank" rel="noreferrer">
             <div className={codeIcon["hex"]}>
                 <div></div>
                 <div></div>
