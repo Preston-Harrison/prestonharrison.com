@@ -15,7 +15,7 @@ const WhoAmI = ({ show }: Props) => {
         with an interest in web technology and cryptocurrencies. I'm
         proficient in Javascript / Typescript, React, and Solidity.
         <br /><br />
-        I'm currently working as a developer at DLTx, and studying
+        I'm currently working as a developer at <a href="https://www.dltx.io/" target="_blank">DLTx</a>, and studying
         Computer Science at the University of Queensland. I love learning,
         and am always on the lookout for new projects / skills to pick up.
       </p>

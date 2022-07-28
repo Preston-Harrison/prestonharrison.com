@@ -48,7 +48,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Preston Harrison</title>
         <meta name="description" content="Preston Harrison's website and portfolio" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <ThreeJSCanvas onLoad={onLoad} />
       <Modal type={modalType} closeModal={() => setModalType(null)} />

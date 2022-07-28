@@ -5,6 +5,8 @@ type Props = {
   openMenu: () => void;
 }
 
+const downloadName = `Preston_Harrison_Resume_${new Date().toLocaleDateString()}`;
+
 const Header = ({ openMenu }: Props) => {
   return (
     <div id={styles["header-container"]}>
@@ -14,10 +16,12 @@ const Header = ({ openMenu }: Props) => {
         <rect y="13" width="60" height="2" />
         <rect y="26" width="60" height="2" />
       </svg>
-      <button>
-        <div>Resume</div>
-        <div className={styles["icon"]}>&#8676;</div>
-      </button>
+      <a href='assets/Preston_Harrison_Resume.pdf' download={downloadName}>
+        <button>
+          <div>Resume</div>
+          <div className={styles["icon"]}>&#8676;</div>
+        </button>
+      </a>
     </div>
   )
 }
