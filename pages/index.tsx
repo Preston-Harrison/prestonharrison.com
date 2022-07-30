@@ -11,7 +11,7 @@ import TitleCard from '../components/Index/Title';
 import WhoAmI from '../components/Index/WhoAmI';
 import styles from '../styles/Index/Home.module.scss';
 
-export const MAX_SCROLL = 10_000;
+export const MAX_SCROLL = 11_000;
 
 const Home: NextPage = () => {
   const [stage, setStage] = React.useState<number>(1);
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
       else if (scroll > 4000 && scroll <= 5000) stage = 3;
       else if (scroll > 5000 && scroll <= 6000) stage = 4;
       else if (scroll > 6000 && scroll <= 8000) stage = 5;
-      else if (scroll > 9000 && scroll <= 10_000) stage = 6;
+      else if (scroll > 9000 && scroll <= 11_000) stage = 6;
       setStage(stage);
     };
 
@@ -42,7 +42,6 @@ const Home: NextPage = () => {
   }, [modalType]);
 
   const onLoad = React.useCallback(() => setLoadedPointCloud(true), []);
-
   return (
     <div>
       <Head>
