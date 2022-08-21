@@ -2,8 +2,8 @@ export const PROJECTS = [
     {
         name: 'handle.fi trade',
         description: `
-        Handle Finance is a global defi foreign exchange (fx) protocol. I developed
-        the trade page, which allows users to trade perpetual futures on fx tokens.
+        Handle Finance is a global defi foreign exchange (fx) protocol. I worked on
+        functionality which allows users to trade perpetual futures on fx tokens.
         `,
         code: "https://github.com/handle-fi",
         demo: "https://app.handle.fi/trade"
