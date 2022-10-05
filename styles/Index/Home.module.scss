@@ -8,13 +8,29 @@
     z-index: 2;
     color: white;
     position: fixed;
-    transform: none;
     bottom: 3rem;
-    right: auto;
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3rem;
 
     @media screen and (max-width: screen.$small) {
         bottom: 2rem;
+    }
+
+    #socials {
+        svg {
+            width: 2rem;
+            height: 2rem;
+            margin-left: 0.5rem;
+        }
+    }
+
+    @media screen and (max-width: screen.$small) {
+        #socials {
+            svg {
+                display: none;
+            }
+        }
     }
 }

@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
@@ -10,6 +13,7 @@ import { Projects, ProjectsMobile } from '../components/Index/Projects';
 import TitleCard from '../components/Index/Title';
 import WhoAmI from '../components/Index/WhoAmI';
 import styles from '../styles/Index/Home.module.scss';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export const MAX_SCROLL = 11_000;
 
@@ -75,7 +79,16 @@ const Home: NextPage = () => {
             <ContactMe show={stage === 6} openContact={() => setModalType("contact")} />
           </div>
           <div id={styles["scroll-down"]} className={stage <= 1 ? 'fade-in' : 'fade-out'}>
-            Scroll Down
+            <div id={styles["socials"]} className={stage === 1 ? 'fade-in' : 'fade-out'}>
+              <a href="https://github.com/Preston-Harrison" rel='noreferrer' target="_blank">
+                <FontAwesomeIcon icon={faGithub as IconDefinition} />
+              </a>
+              <a href="https://www.linkedin.com/in/preston-harrison/" rel='noreferrer' target="_blank">
+                <FontAwesomeIcon icon={faLinkedin as IconDefinition} />
+              </a>
+            </div>
+            <div>Scroll Down</div>
+            <div> {/* Empty on purpose */} </div>
           </div>
         </main>
       </div>
