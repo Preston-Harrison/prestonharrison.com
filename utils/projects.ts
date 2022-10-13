@@ -18,12 +18,13 @@ export const PROJECTS = [
         demo: "#"
     },
     {
-        name: 'Auth Template',
+        name: 'Flashloan Protocol',
         description: `
-        I often find myself repeating similar authentication patterns when writing backends, 
-        so I built an express JS template to help with this.
+        Flashloans are a cryptocurrency specific concept that allows users to take large loans with
+        no collateral. I built this Flashloan Protocol to allow anyone to create a pool of cryptocurrency
+        to be Flashloaned by users. 
         `,
-        code: "https://github.com/Preston-Harrison/authServerTemplate",
+        code: "https://github.com/Preston-Harrison/flashloan_factory",
         demo: "#"
     },
 ]
