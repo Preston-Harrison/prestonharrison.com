@@ -9,22 +9,22 @@ export const PROJECTS = [
         demo: "https://app.handle.fi/trade"
     },
     {
+        name: 'TwoX Exchange',
+        description: `
+        TwoX Exchange is an exchange that lets users trade binary options
+        using cryptocurrency as collateral. It is currently deployed on the
+        Goerli Ethereum Test Network.
+        `,
+        code: "https://github.com/Preston-Harrison/twox-binary-contracts",
+        demo: "https://www.twox.exchange/"
+    },
+    {
         name: 'Web3 Signature Validator',
         description: `
         This is an npm package I wrote to assist with verifying generated data on the blockchain.
         It works by signing the data with an Ethereum address, and verifying the signer on-chain.
         `,
         code: "https://github.com/Preston-Harrison/web3-signature-validator",
-        demo: "#"
-    },
-    {
-        name: 'Flashloan Protocol',
-        description: `
-        Flashloans are a cryptocurrency specific concept that allows users to take large loans with
-        no collateral. I built this Flashloan Protocol to allow anyone to create a pool of cryptocurrency
-        to be Flashloaned by users. 
-        `,
-        code: "https://github.com/Preston-Harrison/flashloan_factory",
         demo: "#"
     },
 ]
