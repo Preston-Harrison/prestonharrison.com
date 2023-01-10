@@ -12,8 +12,8 @@ export const PROJECTS = [
         name: 'TwoX Exchange',
         description: `
         TwoX Exchange is an exchange that lets users trade binary options
-        using cryptocurrency as collateral. It is currently deployed on the
-        Goerli Ethereum Test Network.
+        using cryptocurrency as collateral. It is currently deployed on an
+        Ethereum Test Network.
         `,
         code: "https://github.com/Preston-Harrison/twox-binary-contracts",
         demo: "https://www.twox.exchange/"

@@ -77,7 +77,7 @@ const ProjectsMobile = ({ showTop, showMiddle, showBottom }: Props) => {
                         <h1>{PROJECTS[1].name}</h1>
                         <div>
                             <CodeIcon link={PROJECTS[1].code} />
-                            {/* <DemoIcon link={PROJECTS[1].demo} /> */}
+                            <DemoIcon link={PROJECTS[1].demo} />
                         </div>
                     </div>
                     <hr className={expandMiddle} />
@@ -134,7 +134,7 @@ const Projects = ({ showTop, showMiddle, showBottom }: Props) => {
                 <div className={middle}>
                     <div className={styles['icons']}>
                         <CodeIcon link={PROJECTS[1].code} />
-                        {/* <DemoIcon link={PROJECTS[1].demo} /> */}
+                        <DemoIcon link={PROJECTS[1].demo} />
                     </div>
                     <h1>{PROJECTS[1].name}</h1>
                 </div>

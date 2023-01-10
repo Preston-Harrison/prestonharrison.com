@@ -13,9 +13,9 @@ const WhoAmI = ({ show }: Props) => {
       <p className={show ? "fade-in" : "fade-out"}>
         Hi, my name is Preston. I&apos;m a full stack / blockchain developer 
         with an interest in web technology and cryptocurrencies. I&apos;m
-        proficient in Javascript / Typescript, React, and Solidity.
+        proficient in Javascript / Typescript, React, Rust, and Solidity.
         <br /><br />
-        I&apos;m currently working as a developer at <a href="https://www.dltx.io/" target="_blank" rel="noreferrer">DLTx</a>, and studying
+        I&apos;m currently looking for development work (and ski resorts) near Seattle, while studying
         Computer Science at the University of Queensland. I love learning,
         and am always on the lookout for new projects / skills to pick up.
       </p>
