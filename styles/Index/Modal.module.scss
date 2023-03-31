@@ -14,13 +14,13 @@
     .close-button {
         position: fixed;
         top: 3rem;
-        right: 5rem;
+        left: 5rem;
         cursor: pointer;
         transition: all 250ms;
 
         @media screen and (max-width: screen.$small) {
             top: 2rem;
-            right: 2rem;
+            left: 2rem;
         }
 
         &:hover {
